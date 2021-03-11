@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <arg name="world" default="empty"/>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find line_follwer)/world/my_world1.world"/>
+    <arg name="debug" value="$(arg debug)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="paused" value="$(arg paused)"/>
+  </include>
+
+  <arg name="model" default="$(find line_follwer)/urdf/bot.urdf"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+  <arg name="bot_init_x" default="0"/>
+  <arg name="bot_init_y" default="0"/>
+  <arg name="bot_init_z" default="0.1"/>
+
+  <arg name="bot_init_R" default="0"/>
+  <arg name="bot_init_P" default="0"/>
+  <arg name="bot_init_Y" default="-1.57"/>
+
+  <node name="urdf_spwaner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-x $(arg bot_init_x) -y $(arg bot_init_y) -z $(arg bot_init_z)
+                           -R $(arg bot_init_R) -P $(arg bot_init_P) -Y $(arg bot_init_Y) -urdf -param robot_description -model lf_bot"/>
+
+
+
+  <node name="view_images" pkg="image_view" type="image_view" args="-image /camera/image_raw"/>
+
+
+
+
+</launch>
