@@ -1,5 +1,5 @@
 # line_follwer
-
+<pre>
 Steps to push code from lappy to cloud:<br>
 1.sudo apt-get install git<br>
 2.git config --global user.name "tejalbarnwal"<br>
@@ -20,6 +20,7 @@ Steps to push code from lappy to cloud:<br>
    K.git commit -m "first_version"<br>
    L.git push -u origin main<br>
    M.git status<br>
+</pre>   
 
 
 
