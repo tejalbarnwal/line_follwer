@@ -20,6 +20,8 @@ Steps to push code from lappy to cloud:<br>
    K.git commit -m "first_version"<br>
    L.git push -u origin main<br>
    M.git status<br>
+   
+   If you want to import the changes from the repo into the local machine just do: git pull
 </pre>   
 
 
